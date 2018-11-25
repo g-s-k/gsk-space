@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.1.0",
+    "@babel/plugin-syntax-json-strings": "^7.0.0",
     "@svgr/webpack": "2.4.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
@@ -106,5 +107,11 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
