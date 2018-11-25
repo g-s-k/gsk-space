@@ -1,0 +1,32 @@
+version: '2'
+services:
+
+    nginx:
+        build: ./proxy
+        hostname: nginx
+        restart: always
+        container_name: nginx
+
+        logging:
+          driver: json-file
+          options:
+              max-size: "10m"
+              max-file: "5"
+
+        volumes:
+            - ./etc/ssl:/etc/nginx/ssl
+
+        ports:
+            - "80:80"
+            - "443:443"
+
+        environment:
+            - TZ=America/New_York
+            - LETSENCRYPT=true
+            - LE_EMAIL=george@georgekaplan.xyz
+            - LE_FQDN=g-s-k.space
+
+
+    gsk-space:
+      image: gsk-space
+      container_name: gsk-space
