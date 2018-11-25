@@ -5,5 +5,5 @@ my sandbox for trying new webapp-y things
 ```shell
 $ eval $(docker-machine env $MACHINE_NAME)
 
-$ docker-compose up -d --build
+$ make deploy
 ```
