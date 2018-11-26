@@ -4,7 +4,7 @@ use actix_web::{server, App, HttpRequest};
 
 fn index(req: &HttpRequest) -> &'static str {
     println!("{:?}", req);
-    "Hello World!"
+    "\"Hello World!\""
 }
 
 fn main() {
