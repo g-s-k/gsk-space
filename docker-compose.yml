@@ -26,7 +26,11 @@ services:
             - LE_EMAIL=george@georgekaplan.xyz
             - LE_FQDN=g-s-k.space
 
-
-    gsk-space:
+    client:
       build: ./client
       container_name: gsk-space
+
+    server:
+      build: ./server
+      container_name: crud-server
+      #network_mode: "host"
