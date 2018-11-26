@@ -1,0 +1,28 @@
+version: '2'
+services:
+
+    nginx:
+        image: nginx
+        hostname: nginx
+        restart: always
+        container_name: nginx
+
+        logging:
+          driver: json-file
+          options:
+              max-size: "10m"
+              max-file: "5"
+
+        volumes:
+          - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+
+        ports:
+            - "80:80"
+
+    client:
+      build: ./client
+      container_name: gsk-space
+
+    server:
+      build: ./server
+      container_name: crud-server
