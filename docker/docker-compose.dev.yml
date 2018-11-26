@@ -20,8 +20,13 @@ services:
             - "80:80"
 
     client:
-      build: ../client
+      build: 
+        context: ../client
+        dockerfile: Dockerfile.dev
       container_name: gsk-space
+
+      volumes:
+        - ../client:/usr/src/app
 
     server:
       build: 
