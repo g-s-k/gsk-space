@@ -1,11 +1,10 @@
 version: '2'
 services:
 
-    nginx:
+    inbound_proxy:
         image: nginx
-        hostname: nginx
         restart: always
-        container_name: nginx
+        container_name: inbound_proxy_dev
 
         logging:
           driver: json-file
@@ -23,7 +22,7 @@ services:
       build: 
         context: ../client
         dockerfile: Dockerfile.dev
-      container_name: gsk-space
+      container_name: client_dev
 
       volumes:
         - ../client:/usr/src/app
@@ -32,7 +31,7 @@ services:
       build: 
         context: ../server
         dockerfile: Dockerfile.dev
-      container_name: crud-server
+      container_name: server_dev
 
       volumes:
         - ../server:/usr/src/app
