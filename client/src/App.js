@@ -6,13 +6,12 @@ class App extends Component {
     super(props);
 
     this.state = {
-      message: "Placeholder Text"
+      message: ""
     };
   }
 
   async componentWillMount() {
     const message = await fetch("/api").then(x => x.json());
-    console.log(message);
     this.setState({ message });
   }
 
@@ -24,8 +23,11 @@ class App extends Component {
           <h1 className="App-title">Welcome to George's website</h1>
         </header>
         <p className="App-intro">
-          {`A message from the API: ${message}`}
+          {message ? `A message from the API: ${message}` : "No message from the API yet."}
         </p>
+      <footer>
+        <p className="App-info">The source for this site is located <a href="https://github.com/g-s-k/gsk-space">here</a>.</p>
+      </footer>
       </div>
     );
   }
