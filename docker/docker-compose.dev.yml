@@ -24,5 +24,10 @@ services:
       container_name: gsk-space
 
     server:
-      build: ../server
+      build: 
+        context: ../server
+        dockerfile: Dockerfile.dev
       container_name: crud-server
+
+      volumes:
+        - ../server:/usr/src/app
