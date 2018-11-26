@@ -20,9 +20,9 @@ services:
             - "80:80"
 
     client:
-      build: ./client
+      build: ../client
       container_name: gsk-space
 
     server:
-      build: ./server
+      build: ../server
       container_name: crud-server
