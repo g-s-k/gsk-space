@@ -1,11 +1,10 @@
 version: '2'
 services:
 
-    nginx:
+    inbound_proxy:
         build: ./proxy
-        hostname: nginx
         restart: always
-        container_name: nginx
+        container_name: inbound_proxy_prod
 
         logging:
           driver: json-file
@@ -28,8 +27,8 @@ services:
 
     client:
       build: ../client
-      container_name: gsk-space
+      container_name: client_prod
 
     server:
       build: ../server
-      container_name: crud-server
+      container_name: server_prod
