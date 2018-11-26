@@ -1,7 +1,18 @@
 # gsk-space
 my sandbox for trying new webapp-y things
 
-## how to deploy (so i don't forget)
+## How to...
+
+### develop
+```shell
+$ eval $(docker-machine env -u)
+
+$ make start # to start the development build
+
+$ make stop # to stop it
+```
+
+### deploy
 ```shell
 $ eval $(docker-machine env $MACHINE_NAME)
 
