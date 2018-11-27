@@ -24,30 +24,30 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to George's website</h1>
         </header>
-      <div className="App-body">
-        <div>
+        <div className="App-body">
           <div>
-            {message
-              ? `A message from the API: ${message}`
-              : "No message from the API yet."}
+            <div className="App-info">
+              {message
+                ? `A message from the API: ${message}`
+                : "No message from the API yet."}
+            </div>
+            <div className="App-info">
+              {random ? (
+                <span>
+                  A timestamped hash of an API request: <code>{random}</code>
+                </span>
+              ) : (
+                "No random response from the API yet."
+              )}
+            </div>
           </div>
-          <div>
-            {random ? (
-              <span>
-                A timestamped hash of an API request: <code>{random}</code>
-              </span>
-            ) : (
-              "No random response from the API yet."
-            )}
-          </div>
+          <footer>
+            <p className="App-info">
+              The source for this site is located{" "}
+              <a href="https://github.com/g-s-k/gsk-space">here</a>.
+            </p>
+          </footer>
         </div>
-        <footer>
-          <p className="App-info">
-            The source for this site is located{" "}
-            <a href="https://github.com/g-s-k/gsk-space">here</a>.
-          </p>
-      </footer>
-      </div>
       </div>
     );
   }
