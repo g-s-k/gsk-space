@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from "react";
+
+import LineChart from "./LineChart";
 import "./App.css";
 
 class App extends Component {
@@ -21,9 +23,6 @@ class App extends Component {
   connectWebsocket = () => {
     this.socket = new WebSocket("ws://localhost/api/ws/");
     this.socket.onmessage = this.receiveStats;
-    //setInterval(() => {
-      //this.socket.send(Math.random());
-    //}, 2000)
   };
 
   receiveStats = ({ data }) => {
@@ -50,34 +49,26 @@ class App extends Component {
           <h1 className="App-title">Welcome to George's website</h1>
         </header>
         <div className="App-body">
-          <div>
-            <div className="App-info">
-              {message
-                ? `A message from the API: ${message}`
-                : "No message from the API yet."}
-            </div>
-            <div className="App-info Hash">
-              <Fragment>
-                {random ? (
-                  <span>
-                    A timestamped hash of an API request: <code>{random}</code>
-                  </span>
-                ) : (
-                  "No random response from the API yet."
-                )}
-                <button onClick={this.getRequestHash}>
-                  {random ? "Get new hash" : "Try again"}
-                </button>
-              </Fragment>
-            </div>
-          <div className="App-info Stats">
-            {stats.map((v, i) => (
-              <div key={i}>
-                {v.one}
-              </div>
-            ))}
+          <div className="App-info">
+            {message
+              ? `A message from the API: ${message}`
+              : "No message from the API yet."}
           </div>
+          <div className="App-info Hash">
+            <Fragment>
+              {random ? (
+                <span>
+                  A timestamped hash of an API request: <code>{random}</code>
+                </span>
+              ) : (
+                "No random response from the API yet."
+              )}
+              <button onClick={this.getRequestHash}>
+                {random ? "Get new hash" : "Try again"}
+              </button>
+            </Fragment>
           </div>
+          <LineChart className="App-info" data={stats} />
           <footer>
             <p className="App-info">
               The source for this site is located{" "}

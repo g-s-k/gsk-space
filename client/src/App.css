@@ -53,3 +53,20 @@ code {
   border-radius: 3px;
   padding: 5px;
 }
+
+.LineChart {
+  flex: 1;
+  margin: 0 20px;
+  border: 1px solid silver;
+  background-color: whitesmoke;
+}
+
+.LineChart .LineChart_Path {
+  stroke-width: 3;
+  fill: none;
+}
+
+.LineChart .LineChart_Axis {
+  stroke: silver;
+  stroke-width: 1;
+}
