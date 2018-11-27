@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./App.css";
 
 class App extends Component {
@@ -13,9 +13,14 @@ class App extends Component {
 
   async componentWillMount() {
     const message = await fetch("/api").then(x => x.json());
-    const random = await fetch("/api/sha256").then(x => x.text());
-    this.setState({ message, random });
+    this.setState({ message });
+    this.getRequestHash();
   }
+
+  getRequestHash = async () => {
+    const random = await fetch("/api/sha256").then(x => x.text());
+    this.setState({ random });
+  };
 
   render() {
     const { message, random } = this.state;
@@ -31,14 +36,19 @@ class App extends Component {
                 ? `A message from the API: ${message}`
                 : "No message from the API yet."}
             </div>
-            <div className="App-info">
-              {random ? (
-                <span>
-                  A timestamped hash of an API request: <code>{random}</code>
-                </span>
-              ) : (
-                "No random response from the API yet."
-              )}
+            <div className="App-info Hash">
+              <Fragment>
+                {random ? (
+                  <span>
+                    A timestamped hash of an API request: <code>{random}</code>
+                  </span>
+                ) : (
+                  "No random response from the API yet."
+                )}
+                <button role="button" onClick={this.getRequestHash}>
+                  {random ? "Get new hash" : "Try again"}
+                </button>
+              </Fragment>
             </div>
           </div>
           <footer>

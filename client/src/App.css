@@ -37,7 +37,13 @@ body,
 }
 
 .App-body div.App-info {
-  padding-bottom: 20px;
+  padding: 0 20px 20px;
+}
+
+div.App-info.Hash {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 code {
