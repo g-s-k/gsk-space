@@ -32,7 +32,7 @@ export default class LineChart extends Component {
   }
 
   getSvgX(x) {
-    return this.getWidth() - x * 2;
+    return this.getWidth() - x * 3;
   }
 
   getSvgY(y) {
@@ -41,8 +41,11 @@ export default class LineChart extends Component {
   }
 
   makePath(d, color) {
+    d.reverse();
     const pathD = `M ${d
-      .map((pt, idx) => `${this.getSvgX(idx)} ${this.getSvgY(pt)}`)
+      .map((pt, idx) => [this.getSvgX(idx), this.getSvgY(pt)])
+      .filter(val => val[0] >= 0)
+      .map(val => val.join(" "))
       .join(" L ")}`;
     return (
       <path className="LineChart_Path" d={pathD} style={{ stroke: color }} />
@@ -73,15 +76,17 @@ export default class LineChart extends Component {
         );
       });
 
-    const yVals = Array(Math.max(0, Math.floor(this.getMaxY() * 2)))
+    const maxY = this.getMaxY();
+    const yBracket = maxY > 4 ? 1 : maxY > 2 ? 2 : maxY > 0.5 ? 10 : 50;
+    const yVals = Array(Math.max(0, Math.floor(this.getMaxY() * yBracket)))
       .fill(0)
       .map((v, i) => {
         if (i === 0) return null;
-        const yval = this.getSvgY(i / 2);
+        const yval = this.getSvgY(i / yBracket);
         return (
           <Fragment key={i}>
             <text x={width - 30} y={yval - 5}>
-              {i / 2}
+              {i / yBracket}
             </text>
             <line
               x1={0}
