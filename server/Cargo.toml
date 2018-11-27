@@ -5,3 +5,5 @@ authors = ["George Kaplan <george@georgekaplan.xyz>"]
 
 [dependencies]
 actix-web = "*"
+sha2 = "*"
+env_logger = "*"
