@@ -67,7 +67,7 @@ export default class LineChart extends Component {
               x2={xval}
               y1={0}
               y2={height}
-              stroke-dasharray="10,10"
+              strokeDasharray="10,10"
             />
           </Fragment>
         );
@@ -88,7 +88,7 @@ export default class LineChart extends Component {
               x2={width}
               y1={yval}
               y2={yval}
-              stroke-dasharray="10,10"
+              strokeDasharray="10,10"
             />
           </Fragment>
         );

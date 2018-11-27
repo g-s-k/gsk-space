@@ -21,7 +21,9 @@ class App extends Component {
   }
 
   connectWebsocket = () => {
-    this.socket = new WebSocket("ws://localhost/api/ws/");
+    const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+    const addr = `${protocol}://${window.location.host}/api/ws/`;
+    this.socket = new WebSocket(addr);
     this.socket.onmessage = this.receiveStats;
   };
 
