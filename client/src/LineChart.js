@@ -85,7 +85,7 @@ export default class LineChart extends Component {
         const yval = this.getSvgY(i / yBracket);
         return (
           <Fragment key={i}>
-            <text x={width - 30} y={yval - 5}>
+            <text x={width - 45} y={yval - 5}>
               {i / yBracket}
             </text>
             <line
