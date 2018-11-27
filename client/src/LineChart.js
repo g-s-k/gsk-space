@@ -77,7 +77,8 @@ export default class LineChart extends Component {
       });
 
     const maxY = this.getMaxY();
-    const yBracket = maxY > 4 ? 1 : maxY > 2 ? 2 : maxY > 0.5 ? 10 : 50;
+    const yBracket =
+      maxY > 4 ? 1 : maxY > 2 ? 2 : maxY > 0.5 ? 10 : maxY > 0.01 ? 50 : 100;
     const yVals = Array(Math.max(0, Math.floor(this.getMaxY() * yBracket)))
       .fill(0)
       .map((v, i) => {
