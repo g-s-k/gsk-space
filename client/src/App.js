@@ -7,23 +7,43 @@ class App extends Component {
 
     this.state = {
       message: "",
+      stats: [],
       random: ""
     };
   }
 
-  async componentWillMount() {
-    const message = await fetch("/api").then(x => x.json());
-    this.setState({ message });
+  componentWillMount() {
+    this.getMessage();
     this.getRequestHash();
+    this.connectWebsocket();
   }
+
+  connectWebsocket = () => {
+    this.socket = new WebSocket("ws://localhost/api/ws/");
+    this.socket.onmessage = this.receiveStats;
+    //setInterval(() => {
+      //this.socket.send(Math.random());
+    //}, 2000)
+  };
+
+  receiveStats = ({ data }) => {
+    const { stats } = this.state;
+    stats.push(JSON.parse(data));
+    this.setState({ stats });
+  };
 
   getRequestHash = async () => {
     const random = await fetch("/api/sha256").then(x => x.text());
     this.setState({ random });
   };
 
+  getMessage = async () => {
+    const message = await fetch("/api").then(x => x.json());
+    this.setState({ message });
+  };
+
   render() {
-    const { message, random } = this.state;
+    const { message, random, stats } = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -45,11 +65,18 @@ class App extends Component {
                 ) : (
                   "No random response from the API yet."
                 )}
-                <button role="button" onClick={this.getRequestHash}>
+                <button onClick={this.getRequestHash}>
                   {random ? "Get new hash" : "Try again"}
                 </button>
               </Fragment>
             </div>
+          <div className="App-info Stats">
+            {stats.map((v, i) => (
+              <div key={i}>
+                {v.one}
+              </div>
+            ))}
+          </div>
           </div>
           <footer>
             <p className="App-info">

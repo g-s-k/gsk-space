@@ -82,7 +82,7 @@ impl Ws {
                 ctx.ping("");
                 let load_avg = match act.sys.load_average() {
                     Ok(avg) => format!(
-                        "{{one: {}, five: {}, fifteen: {}}}",
+                        "{{\"one\": {}, \"five\": {}, \"fifteen\": {}}}",
                         avg.one, avg.five, avg.fifteen
                     ),
                     _ => "null".to_string(),
