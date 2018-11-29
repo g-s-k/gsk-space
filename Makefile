@@ -1,7 +1,5 @@
 .PHONY = build deploy start stop
 
-export DOCKER_BUILDKIT=1
-
 all: build
 
 start:
@@ -11,7 +9,7 @@ stop:
 	docker-compose -f docker/docker-compose.dev.yml down && docker volume prune -f
 
 build:
-	cd client; yarn build
+	docker-compose -f docker/docker-compose.yml build
 
 deploy: build
 	docker-compose -f docker/docker-compose.yml up -d --build

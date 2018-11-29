@@ -21,7 +21,7 @@ services:
     client:
       build: 
         context: ../client
-        dockerfile: Dockerfile.dev
+        target: dev
       container_name: client_dev
 
       volumes:
