@@ -4,10 +4,5 @@ version = "0.0.0"
 authors = ["George Kaplan <george@georgekaplan.xyz>"]
 publish = false
 
-[lib]
-crate-type = ["cdylib"]
-
 [dependencies]
-
-[features]
-default = []
+yew = { git = "https://github.com/DenisKolodin/yew" }
