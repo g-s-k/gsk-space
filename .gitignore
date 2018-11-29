@@ -2,6 +2,7 @@
 
 # dependencies
 client/node_modules
+client/target
 
 # testing
 client/coverage

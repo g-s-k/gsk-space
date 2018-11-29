@@ -1,0 +1,13 @@
+[package]
+name = "gsk-space-client"
+version = "0.0.0"
+authors = ["George Kaplan <george@georgekaplan.xyz>"]
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+
+[features]
+default = []
