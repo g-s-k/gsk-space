@@ -41,6 +41,7 @@ export default class LineChart extends Component {
   }
 
   makePath(d, color) {
+    if (d.length === 0) return null;
     d.reverse();
     const pathD = `M ${d
       .map((pt, idx) => [this.getSvgX(idx), this.getSvgY(pt)])
