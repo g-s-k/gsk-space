@@ -1,11 +1,7 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
-
-# dependencies
+# dependencies and artifacts
 client/node_modules
 client/target
-
-# testing
-client/coverage
+server/target
 
 # production
 client/build
@@ -21,4 +17,3 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 etc/
-server/target
