@@ -17,9 +17,11 @@ if you also want to deploy remotely:
 # if you use docker-machine
 $ eval $(docker-machine env -u)
 
-$ make start # to start the development build
+# to start the development build
+$ make start
 
-$ make stop # to stop it
+# to stop it
+$ make stop
 ```
 
 ### deploy
