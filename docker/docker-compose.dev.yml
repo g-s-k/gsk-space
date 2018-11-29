@@ -5,13 +5,11 @@ services:
         image: nginx
         restart: always
         container_name: inbound_proxy_dev
-
         logging:
           driver: json-file
           options:
               max-size: "10m"
               max-file: "5"
-
         volumes:
           - ./proxy/nginx.conf:/etc/nginx/nginx.conf
 
@@ -23,7 +21,6 @@ services:
         context: ../client
         target: dev
       container_name: client_dev
-
       volumes:
         - ../client:/usr/src/app
 
@@ -32,6 +29,5 @@ services:
         context: ../server
         target: dev
       container_name: server_dev
-
       volumes:
         - ../server:/usr/src/app

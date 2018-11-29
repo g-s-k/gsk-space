@@ -5,20 +5,16 @@ services:
         build: ./proxy
         restart: always
         container_name: inbound_proxy_prod
-
         logging:
           driver: json-file
           options:
               max-size: "10m"
               max-file: "5"
-
         volumes:
             - ../etc/ssl:/etc/nginx/ssl
-
         ports:
             - "80:80"
             - "443:443"
-
         environment:
             - TZ=America/New_York
             - LETSENCRYPT=true
