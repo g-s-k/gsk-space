@@ -12,7 +12,6 @@ services:
               max-file: "5"
         volumes:
           - ./proxy/nginx.conf:/etc/nginx/nginx.conf
-
         ports:
             - "80:80"
 
