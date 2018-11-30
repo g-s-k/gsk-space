@@ -3,21 +3,21 @@ extern crate yew;
 
 use yew::prelude::*;
 
-pub struct Model {
+struct AppModel {
     value: i64,
 }
 
-pub enum Msg {
+enum Msg {
     Increment,
     Decrement,
 }
 
-impl Component for Model {
+impl Component for AppModel {
     type Message = Msg;
     type Properties = ();
 
     fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
-        Model {
+        AppModel {
             value: 0,
         }
     }
@@ -35,20 +35,36 @@ impl Component for Model {
     }
 }
 
-impl Renderable<Model> for Model {
+impl Renderable<AppModel> for AppModel {
     fn view(&self) -> Html<Self> {
         html! {
-            <div>
-                <button onclick=|_| Msg::Increment,>{ "Add 1" }</button>
-                <button onclick=|_| Msg::Decrement,>{ "Subtract 1" }</button>
-                <p>{ self.value }</p>
-            </div>
+            <>
+                <header class="Banner",>
+                    <h1 class="PageTitle",>
+                        { "Welcome to George's website" }
+                    </h1>
+                </header>
+                <div class="PageBody",>
+                    <button onclick=|_| Msg::Increment,>
+                        { "Add 1" }
+                    </button>
+                    <button onclick=|_| Msg::Decrement,>
+                        { "Subtract 1" }
+                    </button>
+                    <p>{ self.value }</p>
+                </div>
+                <footer class="Footer",>
+                    { "The source for this site is available " }
+                    <a href="https://github.com/g-s-k/gsk-space",>{ "here" }</a>
+                    { "." }
+                </footer>
+            </>
         }
     }
 }
 
 fn main() {
     yew::initialize();
-    App::<Model>::new().mount_to_body();
+    App::<AppModel>::new().mount_to_body();
     yew::run_loop();
 }
