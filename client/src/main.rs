@@ -8,7 +8,8 @@ pub struct Model {
 }
 
 pub enum Msg {
-    DoIt,
+    Increment,
+    Decrement,
 }
 
 impl Component for Model {
@@ -23,8 +24,11 @@ impl Component for Model {
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
         match msg {
-            Msg::DoIt => {
+            Msg::Increment => {
                 self.value += 1;
+            }
+            Msg::Decrement => {
+                self.value -= 1;
             }
         }
         true
@@ -35,7 +39,8 @@ impl Renderable<Model> for Model {
     fn view(&self) -> Html<Self> {
         html! {
             <div>
-                <button onclick=|_| Msg::DoIt,>{ "Add +1" }</button>
+                <button onclick=|_| Msg::Increment,>{ "Add 1" }</button>
+                <button onclick=|_| Msg::Decrement,>{ "Subtract 1" }</button>
                 <p>{ self.value }</p>
             </div>
         }
