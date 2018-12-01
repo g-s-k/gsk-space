@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  inbound_proxy:
+    build:
+      context: ../proxy
+      target: ${DOCKER_TARGET}
+
+  client:
+    build:
+      context: ../client
+      target: ${DOCKER_TARGET}
+    volumes:
+      - ../client:/usr/src/app
+
+  server:
+    build:
+      context: ../server
+      target: ${DOCKER_TARGET}
+    volumes:
+      - ../server:/usr/src/app

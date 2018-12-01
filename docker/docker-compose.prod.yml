@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  inbound_proxy:
+    volumes:
+      - ../etc/ssl:/etc/nginx/ssl
+    ports:
+      - "443:443"

@@ -3,13 +3,19 @@
 all: build
 
 start:
-	docker-compose -f docker/docker-compose.dev.yml up -d --build
+	cd docker; docker-compose up -d
 
 stop:
-	docker-compose -f docker/docker-compose.dev.yml down && docker volume prune -f
+	cd docker; docker-compose down
 
 build:
-	docker-compose -f docker/docker-compose.yml build
+	cd docker; DOCKER_TARGET=prod docker-compose build
 
-deploy: build
-	docker-compose -f docker/docker-compose.yml up -d --build
+push: build
+	cd docker; docker-compose push
+
+deploy:
+	cd docker; docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
+undeploy:
+	cd docker; docker-compose -f docker-compose.yml -f docker-compose.prod.yml down
