@@ -6,35 +6,18 @@ mod header;
 use yew::prelude::*;
 use header::Header;
 
-struct AppModel {
-    value: i64,
-}
-
-enum Msg {
-    Increment,
-    Decrement,
-}
+struct AppModel;
 
 impl Component for AppModel {
-    type Message = Msg;
+    type Message = ();
     type Properties = ();
 
     fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
-        AppModel {
-            value: 0,
-        }
+        AppModel {}
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
-        match msg {
-            Msg::Increment => {
-                self.value += 1;
-            }
-            Msg::Decrement => {
-                self.value -= 1;
-            }
-        }
-        true
+    fn update(&mut self, _: Self::Message) -> ShouldRender {
+        false
     }
 }
 
@@ -44,13 +27,6 @@ impl Renderable<AppModel> for AppModel {
             <>
                 <Header: title="Welcome to George's website", />
                 <div class="PageBody",>
-                    <button onclick=|_| Msg::Increment,>
-                        { "Add 1" }
-                    </button>
-                    <button onclick=|_| Msg::Decrement,>
-                        { "Subtract 1" }
-                    </button>
-                    <p>{ self.value }</p>
                 </div>
                 <footer class="Footer",>
                     { "The source for this site is available " }
