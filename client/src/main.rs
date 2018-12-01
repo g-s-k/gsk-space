@@ -1,7 +1,10 @@
 #[macro_use]
 extern crate yew;
 
+mod header;
+
 use yew::prelude::*;
+use header::Header;
 
 struct AppModel {
     value: i64,
@@ -39,11 +42,7 @@ impl Renderable<AppModel> for AppModel {
     fn view(&self) -> Html<Self> {
         html! {
             <>
-                <header class="Banner",>
-                    <h1 class="PageTitle",>
-                        { "Welcome to George's website" }
-                    </h1>
-                </header>
+                <Header: title="Welcome to George's website", />
                 <div class="PageBody",>
                     <button onclick=|_| Msg::Increment,>
                         { "Add 1" }
