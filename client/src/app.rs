@@ -1,4 +1,5 @@
 use yew::prelude::*;
+
 use header::Header;
 use footer::Footer;
 
@@ -9,7 +10,7 @@ impl Component for App {
     type Properties = ();
 
     fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
-        App {}
+        App
     }
 
     fn update(&mut self, _: Self::Message) -> ShouldRender {
