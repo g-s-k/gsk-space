@@ -3,7 +3,7 @@
 all: build
 
 start:
-	cd docker; docker-compose up -d
+	cd docker; docker-compose up -d --build
 
 stop:
 	cd docker; docker-compose down
@@ -15,6 +15,7 @@ push: build
 	cd docker; docker-compose push
 
 deploy:
+	cd docker; docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull
 	cd docker; docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 
 undeploy:
