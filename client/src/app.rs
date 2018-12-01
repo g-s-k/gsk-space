@@ -1,5 +1,6 @@
 use yew::prelude::*;
 use header::Header;
+use footer::Footer;
 
 pub struct App;
 
@@ -23,12 +24,8 @@ impl Renderable<App> for App {
                 <Header: title="Welcome to George's website", />
                 <div class="PageBody",>
                 </div>
-                <footer class="Footer",>
-            { "The source for this site is available " }
-            <a href="https://github.com/g-s-k/gsk-space",>{ "here" }</a>
-            { "." }
-            </footer>
-                </>
+                <Footer: />
+            </>
         }
     }
 }
