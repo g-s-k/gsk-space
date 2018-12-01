@@ -1,15 +1,13 @@
-mod actions;
-
 use yew::prelude::*;
 
-pub struct Body;
+pub struct Actions;
 
-impl Component for Body {
+impl Component for Actions {
     type Message = ();
     type Properties = ();
 
     fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
-        Body
+        Actions
     }
 
     fn update(&mut self, _: Self::Message) -> ShouldRender {
@@ -17,13 +15,10 @@ impl Component for Body {
     }
 }
 
-impl Renderable<Body> for Body {
+impl Renderable<Actions> for Actions {
     fn view(&self) -> Html<Self> {
         html! {
-            <div class="PageBody",>
-                <actions::Actions: />
-                <div class="LoadChart", />
-            </div>
+            <div class="HashActions", />
         }
     }
 }
