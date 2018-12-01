@@ -6,6 +6,7 @@ use yew::prelude::*;
 mod app;
 mod header;
 mod footer;
+mod body;
 
 fn main() {
     yew::initialize();

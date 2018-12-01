@@ -25,9 +25,19 @@ header.Banner > h1.PageTitle {
   font-size: 1.5em;
 }
 
+.PageBody, .Footer {
+  background-color: Snow;
+}
+
 div.PageBody {
   flex: 1;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.PageBody > .LoadChart {
+  flex: 1;
 }
 
 footer.Footer {

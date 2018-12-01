@@ -1,17 +1,13 @@
 use yew::prelude::*;
 
-use header::Header;
-use footer::Footer;
-use body::Body;
+pub struct Body;
 
-pub struct App;
-
-impl Component for App {
+impl Component for Body {
     type Message = ();
     type Properties = ();
 
     fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
-        App
+        Body
     }
 
     fn update(&mut self, _: Self::Message) -> ShouldRender {
@@ -19,14 +15,13 @@ impl Component for App {
     }
 }
 
-impl Renderable<App> for App {
+impl Renderable<Body> for Body {
     fn view(&self) -> Html<Self> {
         html! {
-            <>
-                <Header: title="Welcome to George's website", />
-                <Body: />
-                <Footer: />
-            </>
+            <div class="PageBody",>
+                <div class="HashActions", />
+                <div class="LoadChart", />
+            </div>
         }
     }
 }
